@@ -126,7 +126,7 @@ class Profilepage(View):
     def get(self, request, username):
         us = User.objects.get(username = username)
         tw = Tweet.objects.filter(user = us.id).order_by('-post_date')
-        # pr = Profile.objects.get_or_create(user_id = us.id)
+        pr = Profile.objects.get_or_create(user_id = us.id)
         follower = Profile.objects.filter(following=us.id)
         context = {'us':us, 'tw':tw, 'follower':follower}
         return render(request, 'profile.html', context)

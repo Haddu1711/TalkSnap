@@ -20,9 +20,16 @@
             </div>
         </div>
         {% if followings.following.all|length == 0 %}
-        <div class="card p-2 text-center m-5 w-50">
-            <h3>You Have Not Follow Any People</h3>
-        </div>
+            {% if s_username != request.user.username %}
+            <div class="card p-2 text-center m-5 w-50">
+                <h3>No Following</h3>
+            </div>
+            {% else %}
+            <div class="card p-2 text-center m-5 w-50">
+                <h3>You Have Not Follow Any People</h3>
+            </div>
+            {% endif %}
+        
         {% else %}
         {% for following in followings.following.all %}
             <div class="people-list">

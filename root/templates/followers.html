@@ -20,9 +20,16 @@
         </div>
     </div>
     {% if followers|length == 0 %}
+        {% if s_username != request.user.username %}
+        <div class="card p-2 text-center m-5 w-50">
+            <h3>No One Follow Him</h3>
+        </div>
+        {% else %}
         <div class="card p-2 text-center m-5 w-50">
             <h3>No One Follow You</h3>
         </div>
+        {% endif %}
+    
     {% else %}
     
     {% for follower in followers %}

@@ -56,13 +56,13 @@
         </div>
     </div>
     <div class="tweet-show-area">
-        <h5 class="m-3 p-2">Tweets from your Followings</h5>
-            {% if user.profile.following.all|length == 0 %}
+        {% comment %} <h5 class="m-3 p-2">Tweets from your Followings</h5> {% endcomment %}
+            {% comment %} {% if user.profile.following.all|length == 0 %}
                 <div class="card p-2 text-center mx-5 my-4 w-75">
                     <h5>No post from your followings</h5>
                 </div>
-            {% endif %}
-        {% for t in tw %}
+            {% endif %} {% endcomment %}
+            {% comment %} {% for t in tw %}
             {% if t.user in user.profile.following.all or t.user == request.user %}
             <div class="tweet-show">
                 <div class="user-part">
@@ -111,10 +111,10 @@
             {% endif %}
         {% endfor %}
 
-        <h5 class="m-3 p-2">Tweets Shared by other peoples</h5>
+        <h5 class="m-3 p-2">Tweets Shared by other peoples</h5> {% endcomment %}
 
         {% for t in tw %}
-            {% if t.user not in user.profile.following.all and t.user != request.user %}
+            {% comment %} {% if t.user not in user.profile.following.all or t.user != request.user %} {% endcomment %}
             <div class="tweet-show">
                 <div class="user-part">
                     <div class="user-pic">
@@ -159,7 +159,7 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
+            {% comment %} {% endif %} {% endcomment %}
         {% endfor %}
         
     </div>

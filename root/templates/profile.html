@@ -114,6 +114,7 @@
                         </div>
                         <small class="text-muted">{{t.post_date | date:'d F Y'}}</small>
                     </div>
+                    {% if t.user == request.user %}
                     <div class="actions">
                         <div class="del-action">
                             <a href="{% url 'deltweet' t.id %}">
@@ -121,6 +122,7 @@
                             </a>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 {% if t.post_text %}
                 <div class="tweet-text">
